@@ -1,0 +1,673 @@
+create database saboysazon;
+use saboysazon;
+
+create table empleado(
+id_empleado INT IDENTITY(1, 1) PRIMARY KEY,
+nombre VARCHAR(50) NOT NULL,
+apellido VARCHAR(50) NOT NULL,
+cedula VARCHAR(20) UNIQUE NOT NULL,
+correo VARCHAR(100) UNIQUE NOT NULL CONSTRAINT CHK_Correo_Empleado CHECK (correo LIKE '%_@%.%'),
+direccion VARCHAR(255) NOT NULL,
+telefono VARCHAR(15) NOT NULL CONSTRAINT CHK_Telefono_Empleado CHECK (telefono LIKE '[0-9]%')
+)
+
+INSERT INTO empleado (nombre, apellido, cedula, correo, direccion, telefono)
+VALUES
+('Juan', 'Pérez', '1234567890', 'juan.perez1@email.com', 'Calle 1, Ciudad A', '1234567890'),
+('María', 'Gómez', '9876543210', 'maria.gomez2@email.com', 'Avenida 2, Ciudad B', '9876543210'),
+('Carlos', 'Martínez', '1122334455', 'carlos.martinez3@email.com', 'Calle 3, Ciudad C', '1122334455'),
+('Ana', 'Rodríguez', '9988776655', 'ana.rodriguez4@email.com', 'Avenida 4, Ciudad D', '9988776655'),
+('Luis', 'Hernández', '5566778899', 'luis.hernandez5@email.com', 'Calle 5, Ciudad E', '5566778899'),
+('Sofía', 'Morales', '6655443322', 'sofia.morales6@email.com', 'Calle 6, Ciudad F', '6655443322'),
+('Pedro', 'Ramírez', '1231231234', 'pedro.ramirez7@email.com', 'Avenida 7, Ciudad G', '1231231234'),
+('Laura', 'Jiménez', '4564564567', 'laura.jimenez8@email.com', 'Calle 8, Ciudad H', '4564564567'),
+('Fernando', 'Vargas', '7897897890', 'fernando.vargas9@email.com', 'Avenida 9, Ciudad I', '7897897890'),
+('Gabriela', 'Castro', '7418529630', 'gabriela.castro10@email.com', 'Calle 10, Ciudad J', '7418529630'),
+('Diego', 'López', '9638527410', 'diego.lopez11@email.com', 'Calle 11, Ciudad K', '9638527410'),
+('Carolina', 'Rojas', '1597534862', 'carolina.rojas12@email.com', 'Avenida 12, Ciudad L', '1597534862'),
+('Alejandro', 'Cruz', '2583691470', 'alejandro.cruz13@email.com', 'Calle 13, Ciudad M', '2583691470'),
+('Valentina', 'Flores', '3692581470', 'valentina.flores14@email.com', 'Calle 14, Ciudad N', '3692581470'),
+('Jorge', 'Ortega', '1472583690', 'jorge.ortega15@email.com', 'Avenida 15, Ciudad O', '1472583690'),
+('Camila', 'Delgado', '7531594560', 'camila.delgado16@email.com', 'Calle 16, Ciudad P', '7531594560'),
+('Andrés', 'García', '3216549870', 'andres.garcia17@email.com', 'Avenida 17, Ciudad Q', '3216549870'),
+('Elena', 'Luna', '6543217890', 'elena.luna18@email.com', 'Calle 18, Ciudad R', '6543217890'),
+('Manuel', 'Ponce', '7894561230', 'manuel.ponce19@email.com', 'Avenida 19, Ciudad S', '7894561230'),
+('Isabel', 'Paredes', '9873216540', 'isabel.paredes20@email.com', 'Calle 20, Ciudad T', '9873216540'),
+('Daniel', 'Mejía', '1594872630', 'daniel.mejia21@email.com', 'Avenida 21, Ciudad U', '1594872630'),
+('Lucía', 'Cortés', '7534269180', 'lucia.cortes22@email.com', 'Calle 22, Ciudad V', '7534269180'),
+('Hugo', 'Estrada', '3217896540', 'hugo.estrada23@email.com', 'Avenida 23, Ciudad W', '3217896540'),
+('Alicia', 'Fuentes', '4568521230', 'alicia.fuentes24@email.com', 'Calle 24, Ciudad X', '4568521230'),
+('Oscar', 'Guzmán', '7891234560', 'oscar.guzman25@email.com', 'Avenida 25, Ciudad Y', '7891234560'),
+('Claudia', 'Herrera', '9637418520', 'claudia.herrera26@email.com', 'Calle 26, Ciudad Z', '9637418520'),
+('Rafael', 'Ibarra', '2581473690', 'rafael.ibarra27@email.com', 'Avenida 27, Ciudad AA', '2581473690'),
+('Diana', 'Juárez', '3697412580', 'diana.juarez28@email.com', 'Calle 28, Ciudad AB', '3697412580'),
+('Victor', 'Navarro', '1473692580', 'victor.navarro29@email.com', 'Avenida 29, Ciudad AC', '1473692580'),
+('Natalia', 'Mendoza', '7532581470', 'natalia.mendoza30@email.com', 'Calle 30, Ciudad AD', '7532581470'),
+('Pablo', 'Vega', '3211478520', 'pablo.vega31@email.com', 'Avenida 31, Ciudad AE', '3211478520'),
+('Cecilia', 'Peña', '6542583690', 'cecilia.pena32@email.com', 'Calle 32, Ciudad AF', '6542583690'),
+('Ricardo', 'Zamora', '7893216540', 'ricardo.zamora33@email.com', 'Avenida 33, Ciudad AG', '7893216540'),
+('Angela', 'Quintana', '9874561230', 'angela.quintana34@email.com', 'Calle 34, Ciudad AH', '9874561230'),
+('Mario', 'Ruiz', '1597532580', 'mario.ruiz35@email.com', 'Avenida 35, Ciudad AI', '1597532580'),
+('Samantha', 'Silva', '7539638520', 'samantha.silva36@email.com', 'Calle 36, Ciudad AJ', '7539638520'),
+('Antonio', 'Suárez', '3218527410', 'antonio.suarez37@email.com', 'Avenida 37, Ciudad AK', '3218527410'),
+('Paola', 'Cabrera', '6541472580', 'paola.cabrera38@email.com', 'Calle 38, Ciudad AL', '6541472580'),
+('Francisco', 'Castillo', '7899631230', 'francisco.castillo39@email.com', 'Avenida 39, Ciudad AM', '7899631230'),
+('Mónica', 'Ríos', '9878524560', 'monica.rios40@email.com', 'Calle 40, Ciudad AN', '9878524560'),
+('Javier', 'Lara', '1596549870', 'javier.lara41@email.com', 'Avenida 41, Ciudad AO', '1596549870'),
+('Rosa', 'Campos', '7537418520', 'rosa.campos42@email.com', 'Calle 42, Ciudad AP', '7537418520'),
+('Edgar', 'Ávila', '3219876540', 'edgar.avila43@email.com', 'Avenida 43, Ciudad AQ', '3219876540'),
+('Verónica', 'Figueroa', '6543214560', 'veronica.figueroa44@email.com', 'Calle 44, Ciudad AR', '6543214560'),
+('Miguel', 'Santana', '7896541230', 'miguel.santana45@email.com', 'Avenida 45, Ciudad AS', '7896541230'),
+('Patricia', 'Blanco', '9871238520', 'patricia.blanco46@email.com', 'Calle 46, Ciudad AT', '9871238520'),
+('Samuel', 'Acosta', '1592581470', 'samuel.acosta47@email.com', 'Avenida 47, Ciudad AU', '1592581470'),
+('Raquel', 'Núñez', '7534567890', 'raquel.nunez48@email.com', 'Calle 48, Ciudad AZ', '2045785963');
+
+
+
+SELECT * FROM empleado
+
+create table cliente(
+id_cliente INT IDENTITY(1, 1) PRIMARY KEY,
+nombre VARCHAR(50) NOT NULL,
+apellido VARCHAR(50) NOT NULL,
+direccion VARCHAR(255) NOT NULL,
+cedula VARCHAR(20) UNIQUE NOT NULL,
+correo VARCHAR(100) UNIQUE NOT NULL CONSTRAINT CHK_Correo_Cliente CHECK (correo LIKE '%_@%.%'),
+telefono VARCHAR(15) NOT NULL CONSTRAINT CHK_Telefono_Cliente CHECK (telefono LIKE '[0-9]%')
+)
+
+INSERT INTO cliente (nombre, apellido, direccion, cedula, correo, telefono)
+VALUES
+('Juan', 'Pérez', 'Calle 1, Ciudad A', '1234567890', 'juan.perez1@email.com', '1234567890'),
+('María', 'Gómez', 'Avenida 2, Ciudad B', '9876543210', 'maria.gomez2@email.com', '9876543210'),
+('Carlos', 'Martínez', 'Calle 3, Ciudad C', '1122334455', 'carlos.martinez3@email.com', '1122334455'),
+('Ana', 'Rodríguez', 'Avenida 4, Ciudad D', '9988776655', 'ana.rodriguez4@email.com', '9988776655'),
+('Luis', 'Hernández', 'Calle 5, Ciudad E', '5566778899', 'luis.hernandez5@email.com', '5566778899'),
+('Sofía', 'Morales', 'Calle 6, Ciudad F', '6655443322', 'sofia.morales6@email.com', '6655443322'),
+('Pedro', 'Ramírez', 'Avenida 7, Ciudad G', '1231231234', 'pedro.ramirez7@email.com', '1231231234'),
+('Laura', 'Jiménez', 'Calle 8, Ciudad H', '4564564567', 'laura.jimenez8@email.com', '4564564567'),
+('Fernando', 'Vargas', 'Avenida 9, Ciudad I', '7897897890', 'fernando.vargas9@email.com', '7897897890'),
+('Gabriela', 'Castro', 'Calle 10, Ciudad J', '7418529630', 'gabriela.castro10@email.com', '7418529630'),
+('Diego', 'López', 'Calle 11, Ciudad K', '9638527410', 'diego.lopez11@email.com', '9638527410'),
+('Carolina', 'Rojas', 'Avenida 12, Ciudad L', '1597534862', 'carolina.rojas12@email.com', '1597534862'),
+('Alejandro', 'Cruz', 'Calle 13, Ciudad M', '2583691470', 'alejandro.cruz13@email.com', '2583691470'),
+('Valentina', 'Flores', 'Calle 14, Ciudad N', '3692581470', 'valentina.flores14@email.com', '3692581470'),
+('Jorge', 'Ortega', 'Avenida 15, Ciudad O', '1472583690', 'jorge.ortega15@email.com', '1472583690'),
+('Camila', 'Delgado', 'Calle 16, Ciudad P', '7531594560', 'camila.delgado16@email.com', '7531594560'),
+('Andrés', 'García', 'Avenida 17, Ciudad Q', '3216549870', 'andres.garcia17@email.com', '3216549870'),
+('Elena', 'Luna', 'Calle 18, Ciudad R', '6543217890', 'elena.luna18@email.com', '6543217890'),
+('Manuel', 'Ponce', 'Avenida 19, Ciudad S', '7894561230', 'manuel.ponce19@email.com', '7894561230'),
+('Isabel', 'Paredes', 'Calle 20, Ciudad T', '9873216540', 'isabel.paredes20@email.com', '9873216540'),
+('Daniel', 'Mejía', 'Avenida 21, Ciudad U', '1594872630', 'daniel.mejia21@email.com', '1594872630'),
+('Lucía', 'Cortés', 'Calle 22, Ciudad V', '7534269180', 'lucia.cortes22@email.com', '7534269180'),
+('Hugo', 'Estrada', 'Avenida 23, Ciudad W', '3217896540', 'hugo.estrada23@email.com', '3217896540'),
+('Alicia', 'Fuentes', 'Calle 24, Ciudad X', '4568521230', 'alicia.fuentes24@email.com', '4568521230'),
+('Oscar', 'Guzmán', 'Avenida 25, Ciudad Y', '7891234560', 'oscar.guzman25@email.com', '7891234560'),
+('Claudia', 'Herrera', 'Calle 26, Ciudad Z', '9637418520', 'claudia.herrera26@email.com', '9637418520'),
+('Rafael', 'Ibarra', 'Avenida 27, Ciudad AA', '2581473690', 'rafael.ibarra27@email.com', '2581473690'),
+('Diana', 'Juárez', 'Calle 28, Ciudad AB', '3697412580', 'diana.juarez28@email.com', '3697412580'),
+('Victor', 'Navarro', 'Avenida 29, Ciudad AC', '1473692580', 'victor.navarro29@email.com', '1473692580'),
+('Natalia', 'Mendoza', 'Calle 30, Ciudad AD', '7532581470', 'natalia.mendoza30@email.com', '7532581470'),
+('Pablo', 'Vega', 'Avenida 31, Ciudad AE', '3211478520', 'pablo.vega31@email.com', '3211478520'),
+('Cecilia', 'Peña', 'Calle 32, Ciudad AF', '6542583690', 'cecilia.pena32@email.com', '6542583690'),
+('Ricardo', 'Zamora', 'Avenida 33, Ciudad AG', '7893216540', 'ricardo.zamora33@email.com', '7893216540'),
+('Angela', 'Quintana', 'Calle 34, Ciudad AH', '9874561230', 'angela.quintana34@email.com', '9874561230'),
+('Mario', 'Ruiz', 'Avenida 35, Ciudad AI', '1597532580', 'mario.ruiz35@email.com', '1597532580'),
+('Samantha', 'Silva', 'Calle 36, Ciudad AJ', '7539638520', 'samantha.silva36@email.com', '7539638520'),
+('Antonio', 'Suárez', 'Avenida 37, Ciudad AK', '3218527410', 'antonio.suarez37@email.com', '3218527410'),
+('Paola', 'Cabrera', 'Calle 38, Ciudad AL', '6541472580', 'paola.cabrera38@email.com', '6541472580'),
+('Francisco', 'Castillo', 'Avenida 39, Ciudad AM', '7899631230', 'francisco.castillo39@email.com', '7899631230'),
+('Mónica', 'Ríos', 'Calle 40, Ciudad AN', '9878524560', 'monica.rios40@email.com', '9878524560'),
+('Javier', 'Lara', 'Avenida 41, Ciudad AO', '1596549870', 'javier.lara41@email.com', '1596549870'),
+('Rosa', 'Campos', 'Calle 42, Ciudad AP', '7537418520', 'rosa.campos42@email.com', '7537418520'),
+('Edgar', 'Ávila', 'Avenida 43, Ciudad AQ', '3219876540', 'edgar.avila43@email.com', '3219876540'),
+('Verónica', 'Figueroa', 'Calle 44, Ciudad AR', '6543214560', 'veronica.figueroa44@email.com', '6543214560'),
+('Miguel', 'Santana', 'Avenida 45, Ciudad AS', '7896541230', 'miguel.santana45@email.com', '7896541230'),
+('Patricia', 'Blanco', 'Calle 46, Ciudad AT', '9871238520', 'patricia.blanco46@email.com', '9871238520'),
+('Samuel', 'Acosta', 'Avenida 47, Ciudad AU', '1592581470', 'samuel.acosta47@email.com', '1592581470'),
+('Raquel', 'Núñez', 'Calle 48, Ciudad AV', '7534567890', 'raquel.nunez48@email.com', '7534567890'),
+('Esteban', 'Vargas', 'Avenida 49, Ciudad AW', '3217531590', 'esteban.vargas49@email.com', '3217531590'),
+('Silvia', 'Ortiz', 'Calle 50, Ciudad AX', '6541597530', 'silvia.ortiz50@email.com', '6541597530')
+
+
+SELECT * FROM cliente
+
+
+create table pedido(
+id_pedido INT IDENTITY(1, 1) PRIMARY KEY,
+metodo_pago VARCHAR(50) NOT NULL CONSTRAINT CHK_Metodo_Pago CHECK (metodo_pago IN ('Efectivo', 'Tarjeta', 'Transferencia')),
+cantidad_total INT NOT NULL CONSTRAINT CHK_Cantidad_Total CHECK (cantidad_total > 0),
+total DECIMAL(10,2) NOT NULL CONSTRAINT CHK_Total CHECK (total > 0)
+)
+
+INSERT INTO pedido (metodo_pago, cantidad_total, total)
+VALUES
+('Efectivo', 5, 250.50),
+('Tarjeta', 3, 120.75),
+('Transferencia', 10, 850.00),
+('Efectivo', 7, 345.20),
+('Tarjeta', 2, 89.99),
+('Transferencia', 8, 600.50),
+('Efectivo', 4, 190.40),
+('Tarjeta', 6, 420.00),
+('Transferencia', 9, 780.25),
+('Efectivo', 3, 135.75),
+('Tarjeta', 5, 300.60),
+('Transferencia', 12, 950.80),
+('Efectivo', 8, 400.90),
+('Tarjeta', 2, 99.99),
+('Transferencia', 6, 510.30),
+('Efectivo', 4, 230.00),
+('Tarjeta', 7, 500.00),
+('Transferencia', 3, 110.50),
+('Efectivo', 10, 850.75),
+('Tarjeta', 8, 680.40),
+('Transferencia', 5, 290.60),
+('Efectivo', 6, 350.80),
+('Tarjeta', 9, 710.20),
+('Transferencia', 2, 99.50),
+('Efectivo', 7, 375.00),
+('Tarjeta', 4, 190.20),
+('Transferencia', 11, 920.45),
+('Efectivo', 3, 150.00),
+('Tarjeta', 6, 410.99),
+('Transferencia', 8, 610.75),
+('Efectivo', 9, 720.80),
+('Tarjeta', 5, 310.60),
+('Transferencia', 4, 230.90),
+('Efectivo', 2, 89.75),
+('Tarjeta', 10, 900.00),
+('Transferencia', 7, 550.60),
+('Efectivo', 6, 350.20),
+('Tarjeta', 3, 130.50),
+('Transferencia', 9, 780.45),
+('Efectivo', 8, 410.90),
+('Tarjeta', 5, 300.50),
+('Transferencia', 12, 990.75),
+('Efectivo', 7, 360.30),
+('Tarjeta', 4, 210.40),
+('Transferencia', 6, 500.00),
+('Efectivo', 9, 720.90),
+('Tarjeta', 2, 100.50),
+('Transferencia', 10, 850.25),
+('Efectivo', 5, 310.75),
+('Tarjeta', 8, 670.40)
+
+SELECT * FROM pedido
+
+create table detalle_pedido (
+    id_detalle INT IDENTITY(1, 1) PRIMARY KEY,
+    id_pedido INT NOT NULL FOREIGN KEY REFERENCES pedido(id_pedido) ON DELETE CASCADE,
+    id_producto INT NOT NULL FOREIGN KEY REFERENCES producto(id_producto) ON DELETE CASCADE,
+    cantidad_producto INT NOT NULL CONSTRAINT CHK_Cantidad_Producto CHECK (cantidad_producto > 0),
+    subtotal DECIMAL(10, 2) NOT NULL CONSTRAINT CHK_Subtotal CHECK (subtotal > 0),
+    fecha_hora_ingreso DATETIME NOT NULL,
+    fecha_hora_despacho DATETIME NOT NULL, 
+	CONSTRAINT CHK_Fechas CHECK (fecha_hora_despacho >= fecha_hora_ingreso)
+)
+
+
+DECLARE @i INT = 1;
+DECLARE @id_pedido INT;
+DECLARE @id_producto INT;
+DECLARE @cantidad_producto INT;
+DECLARE @subtotal DECIMAL(10, 2);
+DECLARE @fecha_hora_ingreso DATETIME;
+DECLARE @fecha_hora_despacho DATETIME;
+
+WHILE @i <= 20
+BEGIN
+    SELECT TOP 1 @id_pedido = id_pedido FROM pedido ORDER BY NEWID();
+    
+    SELECT TOP 1 @id_producto = id_producto FROM producto ORDER BY NEWID();
+
+    SET @cantidad_producto = CAST(1 + FLOOR(RAND() * 20) AS INT);
+
+    SET @subtotal = CAST(@cantidad_producto * (10 + FLOOR(RAND() * 91)) AS DECIMAL(10, 2));
+
+    SET @fecha_hora_ingreso = DATEADD(DAY, -1 * FLOOR(RAND() * 30), GETDATE());
+
+    SET @fecha_hora_despacho = DATEADD(HOUR, FLOOR(RAND() * 48), @fecha_hora_ingreso);
+
+    
+    INSERT INTO detalle_pedido ( id_pedido, id_producto, cantidad_producto, subtotal, fecha_hora_ingreso, fecha_hora_despacho)
+    VALUES (
+        @id_pedido, 
+        @id_producto, 
+        @cantidad_producto, 
+        @subtotal, 
+        @fecha_hora_ingreso, 
+        @fecha_hora_despacho
+    );
+
+    
+    SET @i = @i + 1;
+END;
+
+
+SELECT * FROM detalle_pedido;
+
+
+
+create table producto(
+id_producto INT IDENTITY(1, 1) PRIMARY KEY,
+nombre VARCHAR(100) NOT NULL,
+descripcion TEXT NOT NULL,
+precio DECIMAL(10,2) NOT NULL CONSTRAINT CHK_Precio CHECK (precio > 0),
+categoria VARCHAR(50) NOT NULL,
+stock INT NOT NULL CONSTRAINT CHK_Stock CHECK (stock >= 0)
+)
+
+INSERT INTO producto (nombre, descripcion, precio, categoria, stock)
+VALUES
+('Hamburguesa Clásica', 'Hamburguesa con carne, queso, lechuga y tomate', 50.00, 'Hamburguesas', 100),
+('Hamburguesa Doble', 'Hamburguesa con doble carne, queso cheddar, bacon y lechuga', 80.00, 'Hamburguesas', 80),
+('Hamburguesa BBQ', 'Hamburguesa con carne, salsa BBQ, cebolla caramelizada y queso cheddar', 70.00, 'Hamburguesas', 120),
+('Hamburguesa Vegana', 'Hamburguesa con proteína vegetal, lechuga, tomate y mayonesa vegana', 65.00, 'Hamburguesas', 90),
+('Hamburguesa con Huevo', 'Hamburguesa con carne, queso, huevo frito, lechuga y tomate', 75.00, 'Hamburguesas', 110),
+('Hamburguesa con Bacon', 'Hamburguesa con carne, queso, bacon crujiente, lechuga y tomate', 85.00, 'Hamburguesas', 100),
+('Hamburguesa Picante', 'Hamburguesa con carne, jalapeños, queso picante y salsa', 70.00, 'Hamburguesas', 130),
+('Hamburguesa Deluxe', 'Hamburguesa con carne, queso suizo, cebolla caramelizada y mayonesa', 90.00, 'Hamburguesas', 95),
+('Hamburguesa Tex-Mex', 'Hamburguesa con carne, guacamole, cebolla, queso cheddar y salsa picante', 80.00, 'Hamburguesas', 100),
+('Hamburguesa BBQ Chicken', 'Hamburguesa con pechuga de pollo a la parrilla, salsa BBQ, lechuga y tomate', 75.00, 'Hamburguesas', 70),
+
+('Perro Caliente Clásico', 'Perro caliente con ketchup, mostaza, cebolla y mayonesa', 25.00, 'Perros Calientes', 150),
+('Perro Caliente con Bacon', 'Perro caliente con bacon crujiente, ketchup y mostaza', 35.00, 'Perros Calientes', 120),
+('Perro Caliente Picante', 'Perro caliente con jalapeños, ketchup y salsa picante', 30.00, 'Perros Calientes', 140),
+('Perro Caliente BBQ', 'Perro caliente con salsa BBQ, cebolla caramelizada y mostaza', 40.00, 'Perros Calientes', 110),
+('Perro Caliente con Queso', 'Perro caliente con queso derretido, ketchup y mostaza', 33.00, 'Perros Calientes', 130),
+('Perro Caliente Mexicano', 'Perro caliente con guacamole, cebolla, tomate y salsa picante', 40.00, 'Perros Calientes', 115),
+('Perro Caliente con Salsa Especial', 'Perro caliente con salsa especial, cebolla morada y ketchup', 32.00, 'Perros Calientes', 125),
+('Perro Caliente Doble', 'Perro caliente con doble salchicha, ketchup, mostaza y cebolla', 45.00, 'Perros Calientes', 90),
+('Perro Caliente Vegano', 'Perro caliente con salchicha vegana, ketchup y mostaza', 35.00, 'Perros Calientes', 105),
+('Perro Caliente con Guacamole', 'Perro caliente con guacamole, cebolla y salsa picante', 38.00, 'Perros Calientes', 100),
+
+('Taco al Pastor', 'Taco al pastor con cebolla, cilantro y salsa roja', 35.00, 'Tacos', 150),
+('Taco de Carnitas', 'Taco con carnitas, cebolla, cilantro y salsa verde', 38.00, 'Tacos', 140),
+('Taco de Bistec', 'Taco de bistec con cebolla, cilantro y salsa roja', 40.00, 'Tacos', 130),
+('Taco Vegano', 'Taco con proteína vegetal, cebolla, cilantro y salsa', 35.00, 'Tacos', 120),
+('Taco de Pollo', 'Taco con pollo a la parrilla, cebolla, cilantro y salsa', 37.00, 'Tacos', 110),
+('Taco de Pescado', 'Taco de pescado empanizado con repollo y salsa tártara', 42.00, 'Tacos', 100),
+('Taco de Barbacoa', 'Taco con carne de barbacoa, cebolla, cilantro y salsa verde', 45.00, 'Tacos', 80),
+('Taco de Longaniza', 'Taco de longaniza con cebolla, cilantro y salsa roja', 40.00, 'Tacos', 130),
+('Taco de Chicharrón', 'Taco con chicharrón prensado, cebolla, cilantro y salsa verde', 38.00, 'Tacos', 120),
+('Taco al Carbon', 'Taco con carne al carbón, cebolla, cilantro y salsa roja', 43.00, 'Tacos', 115),
+
+('Hamburguesa Especial', 'Hamburguesa con carne, bacon, queso cheddar, cebolla caramelizada y mayonesa', 95.00, 'Hamburguesas', 100),
+('Perro Caliente Especial', 'Perro caliente con salchicha extra grande, bacon, salsa BBQ y cebolla', 50.00, 'Perros Calientes', 150),
+('Taco de Cochinita Pibil', 'Taco de cochinita pibil con cebolla morada y salsa', 47.00, 'Tacos', 80),
+('Hamburguesa con Guacamole', 'Hamburguesa con carne, queso, guacamole y lechuga', 85.00, 'Hamburguesas', 70),
+('Taco de Suadero', 'Taco de suadero con cebolla, cilantro y salsa roja', 40.00, 'Tacos', 90),
+('Perro Caliente con Salsa de Ajo', 'Perro caliente con salsa de ajo, ketchup y mostaza', 35.00, 'Perros Calientes', 110),
+('Taco de Pollo Asado', 'Taco de pollo asado con cebolla y salsa picante', 40.00, 'Tacos', 95),
+('Hamburguesa con Salsa Picante', 'Hamburguesa con carne, queso, salsa picante y jalapeños', 75.00, 'Hamburguesas', 80),
+('Perro Caliente con Queso Derretido', 'Perro caliente con queso derretido, mostaza y cebolla', 45.00, 'Perros Calientes', 120),
+('Taco de Arrachera', 'Taco con carne de arrachera, cebolla, cilantro y salsa', 55.00, 'Tacos', 100),
+
+('Hamburguesa con Cebolla Caramelizada', 'Hamburguesa con carne, cebolla caramelizada, queso y mayonesa', 90.00, 'Hamburguesas', 110),
+('Perro Caliente con Guacamole', 'Perro caliente con guacamole, cebolla y salsa picante', 40.00, 'Perros Calientes', 100),
+('Taco de Frijoles', 'Taco con frijoles refritos, cebolla, cilantro y salsa', 30.00, 'Tacos', 115),
+('Hamburguesa con Cheddar y Bacon', 'Hamburguesa con queso cheddar, bacon crujiente y cebolla', 80.00, 'Hamburguesas', 95),
+('Perro Caliente Clásico con Papas', 'Perro caliente clásico con papas fritas', 45.00, 'Perros Calientes', 105),
+('Taco al Pastor con Piña', 'Taco al pastor con piña, cebolla y cilantro', 40.00, 'Tacos', 120),
+('Hamburguesa de Pollo', 'Hamburguesa de pollo a la parrilla con lechuga, tomate y mayonesa', 70.00, 'Hamburguesas', 100),
+('Perro Caliente con Salsa de Chipotle', 'Perro caliente con salsa de chipotle, cebolla y mostaza', 38.00, 'Perros Calientes', 130),
+('Taco de Camarón', 'Taco de camarón con cebolla morada, cilantro y salsa picante', 50.00, 'Tacos', 90),
+('Hamburguesa con Queso Suizo', 'Hamburguesa con queso suizo, carne, bacon y mayonesa', 85.00, 'Hamburguesas', 80)
+
+SELECT * FROM producto
+
+
+create table sucursales(
+id_sucursal INT IDENTITY(1, 1) PRIMARY KEY,
+nombre VARCHAR(100) NOT NULL,
+ubicacion VARCHAR(255) NOT NULL
+)
+
+
+INSERT INTO sucursales (nombre, ubicacion)
+VALUES 
+('Sucursal Central', 'Calle Principal #123, Ciudad A'),
+('Sucursal Norte', 'Avenida del Norte #456, Ciudad B'),
+('Sucursal Sur', 'Calle Sur #789, Ciudad C'),
+('Sucursal Este', 'Avenida del Este #101, Ciudad D'),
+('Sucursal Oeste', 'Calle Oeste #202, Ciudad E'),
+('Sucursal Centro Histórico', 'Plaza Mayor #303, Ciudad F'),
+('Sucursal Industrial', 'Parque Industrial #404, Ciudad G'),
+('Sucursal Costera', 'Paseo Marítimo #505, Ciudad H'),
+('Sucursal Montaña', 'Carretera Montañosa #606, Ciudad I'),
+('Sucursal Frontera', 'Calle Fronteriza #707, Ciudad J'),
+('Sucursal Aeropuerto', 'Terminal Aérea #808, Ciudad K'),
+('Sucursal Universitaria', 'Avenida Universitaria #909, Ciudad L'),
+('Sucursal Rural', 'Carretera Rural #1001, Ciudad M'),
+('Sucursal Comercial', 'Centro Comercial #1102, Ciudad N'),
+('Sucursal Empresarial', 'Zona Empresarial #1203, Ciudad O'),
+('Sucursal Residencial', 'Barrio Residencial #1304, Ciudad P'),
+('Sucursal Mercado', 'Zona de Mercado #1405, Ciudad Q'),
+('Sucursal Hospitalaria', 'Avenida Hospital #1506, Ciudad R'),
+('Sucursal Deportiva', 'Complejo Deportivo #1607, Ciudad S'),
+('Sucursal Tecnológica', 'Parque Tecnológico #1708, Ciudad T')
+
+
+SELECT * FROM sucursales
+
+
+
+--Esta vista proporciona un resumen de todos los pedidos, agrupados por pedido y mostrando el total acumulado de los subtotales por pedido. 
+--También se incluyen las fechas de ingreso y despacho de los productos.
+CREATE VIEW VistaResumenPedidos AS
+SELECT 
+    dp.id_pedido,
+    COUNT(dp.id_detalle) AS total_productos,
+    SUM(dp.subtotal) AS total_pedido,
+    MIN(dp.fecha_hora_ingreso) AS fecha_ingreso,
+    MAX(dp.fecha_hora_despacho) AS fecha_despacho
+FROM detalle_pedido dp
+GROUP BY dp.id_pedido;
+
+--Esta vista muestra los detalles de cada pedido, incluyendo la cantidad de productos, subtotales y las fechas de ingreso y despacho, además del nombre del producto.
+
+CREATE VIEW VistaDetallesPedido AS
+SELECT 
+    dp.id_detalle,
+    dp.id_pedido,
+    dp.id_producto,              
+    dp.cantidad_producto,
+    dp.subtotal,
+    dp.fecha_hora_ingreso,
+    dp.fecha_hora_despacho,
+    (dp.cantidad_producto * dp.subtotal) AS total_por_producto
+FROM detalle_pedido dp
+JOIN producto p ON dp.id_producto = p.id_producto;
+
+
+--Esta vista muestra los pedidos que aún no se han despachado, es decir, aquellos cuyo fecha_hora_despacho es nula o en el futuro respecto a la fecha de ingreso.
+CREATE VIEW VistaPedidosPendientes AS
+SELECT 
+    dp.id_pedido,
+    dp.id_producto,
+    dp.cantidad_producto,
+    dp.subtotal,
+    dp.fecha_hora_ingreso
+FROM detalle_pedido dp
+JOIN producto p ON dp.id_producto = p.id_producto
+WHERE dp.fecha_hora_despacho IS NULL OR dp.fecha_hora_despacho > GETDATE();
+
+
+--En esta vista, se puede consultar el historial completo de los pedidos, mostrando cuándo se ingresaron y se despacharon los productos.
+--Esta vista incluye solo los pedidos cuyo estado ya esté completado (es decir, que tienen una fecha de despacho)
+CREATE VIEW VistaHistorialPedidos AS
+SELECT 
+    dp.id_pedido,
+    dp.id_producto,
+    dp.cantidad_producto,
+    dp.subtotal,
+    dp.fecha_hora_ingreso,
+    dp.fecha_hora_despacho
+FROM detalle_pedido dp
+JOIN producto p ON dp.id_producto = p.id_producto
+WHERE dp.fecha_hora_despacho IS NOT NULL;
+
+
+
+--Si deseas filtrar los pedidos dentro de un rango de fechas específico (por ejemplo, obtener todos los pedidos entre dos fechas), puedes usar esta vista.
+
+CREATE VIEW VistaPedidosPorFecha AS
+SELECT 
+    dp.id_pedido,
+    dp.id_producto,
+    dp.cantidad_producto,
+    dp.subtotal,
+    dp.fecha_hora_ingreso,
+    dp.fecha_hora_despacho
+FROM detalle_pedido dp
+JOIN producto p ON dp.id_producto = p.id_producto
+WHERE dp.fecha_hora_ingreso BETWEEN '2024-01-01' AND '2024-12-31';  -- Rango de fechas de ejemplo
+
+
+--Esta vista agrupa los pedidos por producto y muestra cuántas unidades de ese producto se han pedido, así como el total de subtotales.
+
+CREATE VIEW VistaPedidosPorProducto AS
+SELECT 
+    dp.id_producto,
+    SUM(dp.cantidad_producto) AS cantidad_total,
+    SUM(dp.subtotal) AS total_producto
+FROM detalle_pedido dp
+JOIN producto p ON dp.id_producto = p.id_producto
+GROUP BY dp.id_producto;
+
+UPDATE cliente
+SET direccion = 'Calle 5, Ciudad A', correo = 'juan.perez_updated@email.com', telefono = '1234567891'
+WHERE cedula = '1234567890';
+
+UPDATE cliente
+SET direccion = 'Avenida 3, Ciudad B', correo = 'maria.gomez_updated@email.com', telefono = '9876543211'
+WHERE cedula = '9876543210';
+
+UPDATE cliente
+SET direccion = 'Calle 10, Ciudad C', correo = 'carlos.martinez_updated@email.com', telefono = '1122334456'
+WHERE cedula = '1122334455';
+
+UPDATE cliente
+SET direccion = 'Avenida 6, Ciudad D', correo = 'ana.rodriguez_updated@email.com', telefono = '9988776656'
+WHERE cedula = '9988776655';
+
+UPDATE cliente
+SET direccion = 'Calle 11, Ciudad E', correo = 'luis.hernandez_updated@email.com', telefono = '5566778900'
+WHERE cedula = '5566778899';
+
+UPDATE cliente
+SET direccion = 'Calle 7, Ciudad F', correo = 'sofia.morales_updated@email.com', telefono = '6655443333'
+WHERE cedula = '6655443322';
+
+
+CREATE PROCEDURE InsertarEmpleado
+    @nombre VARCHAR(50),
+    @apellido VARCHAR(50),
+    @cedula VARCHAR(20),
+    @correo VARCHAR(100),
+    @direccion VARCHAR(255),
+    @telefono VARCHAR(15)
+AS
+BEGIN
+    INSERT INTO empleado (nombre, apellido, cedula, correo, direccion, telefono)
+    VALUES (@nombre, @apellido, @cedula, @correo, @direccion, @telefono);
+    
+
+    PRINT 'Empleado insertado correctamente';
+END;
+
+SELECT nombre, apellido, direccion, correo, telefono
+FROM cliente
+WHERE cedula IN ('1234567890', '9876543210', '1122334455', '9988776655', '5566778899', '6655443322');
+
+
+CREATE PROCEDURE InsertarEmpleado
+    @nombre VARCHAR(50),
+    @apellido VARCHAR(50),
+    @cedula VARCHAR(20),
+    @correo VARCHAR(100),
+    @direccion VARCHAR(255),
+    @telefono VARCHAR(15)
+AS
+BEGIN
+
+    INSERT INTO empleado (nombre, apellido, cedula, correo, direccion, telefono)
+    VALUES (@nombre, @apellido, @cedula, @correo, @direccion, @telefono);
+    
+    PRINT 'Empleado insertado correctamente';
+END;
+
+CREATE PROCEDURE ActualizarEmpleado
+    @id_empleado INT,
+    @nombre VARCHAR(50),
+    @apellido VARCHAR(50),
+    @cedula VARCHAR(20),
+    @correo VARCHAR(100),
+    @direccion VARCHAR(255),
+    @telefono VARCHAR(15)
+AS
+BEGIN
+
+    UPDATE empleado
+    SET 
+        nombre = @nombre,
+        apellido = @apellido,
+        cedula = @cedula,
+        correo = @correo,
+        direccion = @direccion,
+        telefono = @telefono
+    WHERE id_empleado = @id_empleado;
+    
+    PRINT 'Empleado actualizado correctamente';
+END;
+
+CREATE PROCEDURE InsertarOActualizarEmpleado
+    @nombre VARCHAR(50),
+    @apellido VARCHAR(50),
+    @cedula VARCHAR(20),
+    @correo VARCHAR(100),
+    @direccion VARCHAR(255),
+    @telefono VARCHAR(15)
+AS
+BEGIN
+    IF EXISTS (SELECT 1 FROM empleado WHERE cedula = @cedula)
+    BEGIN
+        UPDATE empleado
+        SET nombre = @nombre,
+            apellido = @apellido,
+            correo = @correo,
+            direccion = @direccion,
+            telefono = @telefono
+        WHERE cedula = @cedula;
+
+        PRINT 'Empleado actualizado correctamente';
+    END
+    ELSE
+    BEGIN
+        INSERT INTO empleado (nombre, apellido, cedula, correo, direccion, telefono)
+        VALUES (@nombre, @apellido, @cedula, @correo, @direccion, @telefono);
+
+        PRINT 'Empleado insertado correctamente';
+    END
+END;
+
+EXEC sp_helptext 'InsertarEmpleado';
+
+
+
+CREATE PROCEDURE InsertarSucursal
+    @nombre VARCHAR(100),
+    @ubicacion VARCHAR(255)
+AS
+BEGIN
+
+    INSERT INTO sucursales (nombre, ubicacion)
+    VALUES (@nombre, @ubicacion);
+    
+    PRINT 'Sucursal insertada correctamente';
+END;
+
+CREATE PROCEDURE ActualizarSucursal
+    @id_sucursal INT,
+    @nombre VARCHAR(100),
+    @ubicacion VARCHAR(255)
+AS
+BEGIN
+
+    UPDATE sucursales
+    SET 
+        nombre = @nombre,
+        ubicacion = @ubicacion
+    WHERE id_sucursal = @id_sucursal;
+    
+    PRINT 'Sucursal actualizada correctamente';
+END;
+
+EXEC InsertarSucursal 
+    @nombre = 'Sucursal Centro', 
+    @ubicacion = 'Calle Principal 123, Ciudad A';
+
+EXEC ActualizarSucursal 
+    @id_sucursal = 1, 
+    @nombre = 'Sucursal Norte', 
+    @ubicacion = 'Avenida 5, Ciudad B';
+
+EXEC sp_helptext 'InsertarSucursal';
+
+
+
+CREATE PROCEDURE InsertarProducto
+    @nombre VARCHAR(100),
+    @descripcion TEXT,
+    @precio DECIMAL(10,2),
+    @categoria VARCHAR(50),
+    @stock INT
+AS
+BEGIN
+
+    INSERT INTO producto (nombre, descripcion, precio, categoria, stock)
+    VALUES (@nombre, @descripcion, @precio, @categoria, @stock);
+
+    PRINT 'Producto insertado correctamente';
+END;
+
+
+CREATE PROCEDURE ActualizarStockProducto
+    @id_producto INT,
+    @nuevo_stock INT
+AS
+BEGIN
+
+    UPDATE producto
+    SET stock = @nuevo_stock
+    WHERE id_producto = @id_producto;
+
+    PRINT 'Stock actualizado correctamente';
+END;
+
+EXEC sp_helptext 'InsertarProducto';
+
+EXEC sp_helptext 'ActualizarStockProducto';
+
+SELECT definition
+FROM sys.sql_modules
+WHERE object_id = OBJECT_ID('InsertarProducto');
+
+SELECT definition
+FROM sys.sql_modules
+WHERE object_id = OBJECT_ID('ActualizarStockProducto');
+
+
+CREATE TABLE control_eventos (
+    id_evento INT IDENTITY(1,1) PRIMARY KEY,
+    evento_tipo VARCHAR(10) NOT NULL,        
+    tabla_afectada VARCHAR(100) NOT NULL,     
+    datos_antiguos TEXT,                      
+    datos_nuevos TEXT,                       
+    fecha_evento DATETIME NOT NULL DEFAULT GETDATE(), 
+    usuario VARCHAR(50) NOT NULL              
+);
+
+CREATE TRIGGER trg_insert_empleado
+ON empleado
+FOR INSERT
+AS
+BEGIN
+    DECLARE @usuario VARCHAR(50);
+    SET @usuario = SYSTEM_USER; 
+
+    INSERT INTO control_eventos (evento_tipo, tabla_afectada, datos_nuevos, usuario)
+    SELECT 'INSERT', 'empleado', 
+           'ID: ' + CAST(id_empleado AS VARCHAR(10)) + 
+           ', Nombre: ' + nombre + 
+           ', Apellido: ' + apellido + 
+           ', Cedula: ' + cedula + 
+           ', Correo: ' + correo + 
+           ', Direccion: ' + direccion + 
+           ', Telefono: ' + telefono, @usuario
+    FROM inserted;
+END;
+
+
+SELECT * FROM control_eventos ORDER BY fecha_evento DESC;
